@@ -5,16 +5,21 @@ class Line:
 
     def get_score(self) -> int:
         score = 0
-        for frame in self.__frames:
-            score += frame.bowl1
-            score += frame.bowl2
+        last_index = len(self.__frames) - 1
+        for i in range(len(self.__frames)):
+            frame_score = self.__frames[i].bowl1 + self.__frames[i].bowl2
+            if frame_score == 10:
+                score += frame_score
+                score += self.__frames[i + 1].bowl1
+            else:
+                score += frame_score
         return score
 
     def score_frame(self, bowl1: int, bowl2: int) -> None:
         self.__frames.append(Frame(bowl1, bowl2))
 
     def score_spare(self, bowl1: int) -> None:
-        pass
+        self.__frames.append(Frame(bowl1, 10 - bowl1))
 
     def get_frame(self, frame_number: int):
         return self.__frames[frame_number -1]

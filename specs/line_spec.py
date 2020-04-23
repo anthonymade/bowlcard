@@ -188,3 +188,16 @@ class LineSpec(Specification):
                 self.line.is_game_over() == False
                 self.line.score_frame(1, 2)
             self.line.is_game_over() == True
+
+
+    def when_a_spare_is_scored_in_the_10th_frame_an_extra_bowl_is_required(self):
+
+        with given:
+            for i in range(9):
+                self.line.score_frame(0, 0)
+
+        with when:
+            self.line.score_frame(6, 4)
+
+        with then:
+            self.line.is_game_over() == False

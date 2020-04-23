@@ -108,3 +108,13 @@ class LineSpec(Specification):
         with then:
             e = thrown(Exception)
             str(e[1]) == 'bowl 1 cannot be greater than 10, it was 11'
+
+    def bowl2_cannot_be_greater_than_10(self):
+
+        with when:
+            self.line.score_frame(0, 11)
+
+        with then:
+            e = thrown(Exception)
+            str(e[1]) == 'bowl 2 cannot be greater than 10, it was 11'
+

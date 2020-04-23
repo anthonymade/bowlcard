@@ -26,6 +26,8 @@ class Line:
         return score
 
     def score_frame(self, bowl1: int, bowl2: int) -> None:
+        if bowl1 > 10:
+            raise Exception(f"bowl 1 cannot be greater than 10, it was {bowl1}")
         self.__frames.append(Frame(bowl1, bowl2))
 
     def get_frame(self, frame_number: int):

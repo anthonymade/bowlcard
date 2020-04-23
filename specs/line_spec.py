@@ -43,3 +43,25 @@ class LineSpec(Specification):
         with where:
             bowl1 = [2]
             bowl2 = [1]
+
+
+    def we_can_score_multiple_frames(self):
+
+        with given:
+            line = Line()
+
+        with when:
+            line.score_frame(frame1_bowl1, frame1_bowl2)
+            line.score_frame(frame2_bowl1, frame2_bowl2)
+
+        with then:
+            line.get_score() == expected_score
+            line.get_frame(1).bowl1 == frame1_bowl1
+            line.get_frame(1).bowl2 == frame1_bowl2
+            line.get_frame(2).bowl1 == frame2_bowl1
+            line.get_frame(2).bowl2 == frame2_bowl2
+
+        with where:
+            frame1_bowl1 | frame1_bowl2 | frame2_bowl1 | frame2_bowl2 | expected_score
+            3            | 2            | 4            | 1            | 10
+            5            | 2            | 3            | 4            | 14

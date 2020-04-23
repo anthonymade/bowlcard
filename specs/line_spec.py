@@ -258,8 +258,9 @@ class LineSpec(Specification):
     def total_score_is_available_per_frame_for_display_on_a_scorecard(self):
 
         with when:
-            for i in range(4):
+            for i in range(3):
                 self.line.score_frame(10, 0)
+            self.line.calculate_cumulative_frame_scores()
 
         with then:
             self.line.get_frame(1).score == 30
@@ -267,8 +268,9 @@ class LineSpec(Specification):
             self.line.get_frame(3).score == None
 
         with when:
-            for i in range(4):
+            for i in range(3):
                 self.line.score_frame(10, 0)
+            self.line.calculate_cumulative_frame_scores()
 
         with then:
             self.line.get_frame(1).score == 30
@@ -279,8 +281,9 @@ class LineSpec(Specification):
             self.line.get_frame(6).score == None
 
         with when:
-            for i in range(4):
+            for i in range(3):
                 self.line.score_frame(10, 0)
+            self.line.calculate_cumulative_frame_scores()
 
         with then:
             self.line.get_frame(4).score == 120
@@ -293,6 +296,7 @@ class LineSpec(Specification):
         with when:
             self.line.score_frame(10, 0)
             self.line.score_frame(10, 10)
+            self.line.calculate_cumulative_frame_scores()
 
         with then:
             self.line.get_frame(8).score == 240

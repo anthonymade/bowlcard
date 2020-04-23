@@ -9,8 +9,9 @@ class Line:
         for i in range(len(self.__frames)):
             frame_score = self.__frames[i].bowl1 + self.__frames[i].bowl2
             if frame_score == 10:
-                score += frame_score
-                score += self.__frames[i + 1].bowl1
+                if i < last_index:
+                    score += frame_score
+                    score += self.__frames[i + 1].bowl1
             else:
                 score += frame_score
         return score

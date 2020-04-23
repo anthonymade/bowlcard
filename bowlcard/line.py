@@ -6,7 +6,7 @@ class Line:
     def get_score(self) -> int:
         score = 0
         last_index = len(self.__frames) - 1
-        for i in range(len(self.__frames)):
+        for i in range(min(len(self.__frames), 10)):
             frame_score = self.__frames[i].bowl1 + self.__frames[i].bowl2
             if self.__frames[i].bowl1 == 10:
                 if i < last_index and self.__frames[i + 1].bowl1 != 10:

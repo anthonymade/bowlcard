@@ -99,3 +99,12 @@ class LineSpec(Specification):
         with then:
             self.line.get_score() == 41
 
+
+    def bowl1_cannot_be_greater_than_10(self):
+
+        with when:
+            self.line.score_frame(11, 0)
+
+        with then:
+            e = thrown(Exception)
+            e.message == 'bowl 1 cannot be graeter than 10, it was 11'

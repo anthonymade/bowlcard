@@ -32,6 +32,8 @@ class Line:
             raise Exception(f"you cannot score more than 10 with your two bowls, total was {bowl1 + bowl2}")
         if self.is_game_over():
             raise Exception('the game is over, you cannot score')
+        if len(self.__frames) == 10 and self.__frames[9].bowl1 != 10 and bowl2 != 0:
+            raise Exception(f"you only have 1 extra bowl after a 10th frame spare, bowl 2 must be zero but was {bowl2}")
         self.__frames.append(Frame(bowl1, bowl2))
 
     def __validate_bowl_value(self, bowl_number: int, bowl_value: int) -> None:

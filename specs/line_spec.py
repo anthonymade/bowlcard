@@ -107,4 +107,4 @@ class LineSpec(Specification):
 
         with then:
             e = thrown(Exception)
-            str(e[1]) == 'bowl 1 cannot be graeter than 10, it was 11'
+            str(e[1]) == 'bowl 1 cannot be greater than 10, it was 11'

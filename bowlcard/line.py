@@ -1,14 +1,16 @@
 class Line:
 
     def __init__(self):
-        self.__score = 0
         self.__frames = []
 
     def get_score(self) -> int:
-        return self.__score
+        score = 0
+        for frame in self.__frames:
+            score += frame.bowl1
+            score += frame.bowl2
+        return score
 
     def score_frame(self, bowl1: int, bowl2: int):
-        self.__score = self.__score + bowl1 + bowl2
         self.__frames.append(Frame(bowl1, bowl2))
 
     def get_frame(self, frame_number: int):

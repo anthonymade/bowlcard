@@ -30,6 +30,8 @@ class Line:
         self.__validate_bowl_value(2, bowl2)
         if bowl1 < 0:
             raise Exception(f"bowl 1 cannot be less than 0, it was {bowl1}")
+        if bowl2 < 0:
+            raise Exception(f"bowl 2 cannot be less than 0, it was {bowl2}")
         self.__frames.append(Frame(bowl1, bowl2))
 
     def __validate_bowl_value(self, bowl_number: int, bowl_value: int) -> None:

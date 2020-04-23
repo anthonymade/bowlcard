@@ -25,3 +25,21 @@ class LineSpec(Specification):
             bowl1 = [3]
             bowl2 = [4]
             expected_score = [7]
+
+
+    def we_can_get_the_individual_scores_for_a_frame(self):
+
+        with given:
+            line = Line()
+
+        with when:
+            line.score_frame(bowl1, bowl2)
+
+        with then:
+            frame_score = line.get_frame(1)
+            frame_score.bowl1 == bowl1
+            frame_score.bowl2 == bowl2
+
+        with where:
+            bowl1 = [2]
+            bowl2 = [1]

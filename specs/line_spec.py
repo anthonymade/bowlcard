@@ -151,4 +151,19 @@ class LineSpec(Specification):
             bowl_value = [-1, -13]
 
 
+    def the_simple_frame_score_cannot_be_greater_than_10(self):
+
+        with when:
+            self.line.score_frame(bowl1, bowl2)
+
+        with then:
+            e = thrown(Exception)
+            str(e[1]) == 'you cannot score more than 10 with your two bowls, total was ' + str(total)
+
+        with where:
+            bowl1 | bowl2 | total
+            1     | 10    | 11
+            10    | 1     | 11
+            8     | 7     | 15
+
 

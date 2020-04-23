@@ -33,3 +33,19 @@ class LineSpec(Specification):
             frame1_bowl1 | frame1_bowl2 | frame2_bowl1 | frame2_bowl2 | expected_score
             3            | 2            | 4            | 1            | 10
             5            | 2            | 3            | 4            | 14
+
+
+    def we_can_score_a_spare(self):
+
+        with when:
+            self.line.score_spare(bowl1)
+            self.line.score_frame(frame2_bowl1, frame2_bowl2)
+
+        with then:
+            self.line.get_score() == expected_score
+
+        with where:
+            bowl1 = [6]
+            frame2_bowl1 = [3]
+            frame2_bowl2 = [2]
+            expected_score = [10 + 3 + 3 + 2]

@@ -221,3 +221,16 @@ class LineSpec(Specification):
 
         with then:
             self.line.get_score() == 16
+
+
+    def can_correctly_score_a_perfect_game(self):
+
+        with given:
+            for i in range(10):
+                self.line.score_frame(10, 0)
+
+        with when:
+            self.line.score_frame(10, 10)
+
+        with then:
+            self.line.get_score() == 300

@@ -38,14 +38,15 @@ class LineSpec(Specification):
     def we_can_score_a_spare(self):
 
         with when:
-            self.line.score_spare(bowl1)
+            self.line.score_frame(frame1_bowl1, frame1_bowl2)
             self.line.score_frame(frame2_bowl1, frame2_bowl2)
 
         with then:
             self.line.get_score() == expected_score
 
         with where:
-            bowl1 = [6]
+            frame1_bowl1 = [6]
+            frame1_bowl2 = [4]
             frame2_bowl1 = [3]
             frame2_bowl2 = [2]
             expected_score = [10 + 3 + 3 + 2]
@@ -53,7 +54,7 @@ class LineSpec(Specification):
     def a_frame_score_is_not_added_to_the_total_until_its_value_is_known(self):
 
         with when:
-            self.line.score_spare(4)
+            self.line.score_frame(4, 6)
 
         with then:
             self.line.get_score() == 0

@@ -19,9 +19,6 @@ class Line:
     def score_frame(self, bowl1: int, bowl2: int) -> None:
         self.__frames.append(Frame(bowl1, bowl2))
 
-    def score_spare(self, bowl1: int) -> None:
-        self.__frames.append(Frame(bowl1, 10 - bowl1))
-
     def get_frame(self, frame_number: int):
         return self.__frames[frame_number -1]
 

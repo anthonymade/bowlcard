@@ -54,6 +54,7 @@ class Frame:
 
     bowl1 = 0
     bowl2 = 0
+    score = None
 
     def __init__(self, bowl1: int, bowl2: int):
         self.bowl1 = bowl1

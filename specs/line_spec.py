@@ -253,3 +253,48 @@ class LineSpec(Specification):
 
         with where:
             bowl2 = [1, 5]
+
+
+    def total_score_is_available_per_frame_for_display_on_a_scorecard(self):
+
+        with when:
+            for i in range(4):
+                self.line.score_frame(10, 0)
+
+        with then:
+            self.line.get_frame(1).score == 30
+            self.line.get_frame(2).score == None
+            self.line.get_frame(3).score == None
+
+        with when:
+            for i in range(4):
+                self.line.score_frame(10, 0)
+
+        with then:
+            self.line.get_frame(1).score == 30
+            self.line.get_frame(2).score == 60
+            self.line.get_frame(3).score == 90
+            self.line.get_frame(4).score == 120
+            self.line.get_frame(5).score == None
+            self.line.get_frame(6).score == None
+
+        with when:
+            for i in range(4):
+                self.line.score_frame(10, 0)
+
+        with then:
+            self.line.get_frame(4).score == 120
+            self.line.get_frame(5).score == 150
+            self.line.get_frame(6).score == 180
+            self.line.get_frame(7).score == 210
+            self.line.get_frame(8).score == None
+            self.line.get_frame(9).score == None
+
+        with when:
+            self.line.score_frame(10, 0)
+            self.line.score_frame(10, 10)
+
+        with then:
+            self.line.get_frame(8).score == 240
+            self.line.get_frame(9).score == 270
+            self.line.get_frame(10).score == 300

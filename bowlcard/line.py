@@ -9,7 +9,7 @@ class Line:
         for i in range(min(len(self.__frames), 10)):
             frame_score = self.__frames[i].bowl1 + self.__frames[i].bowl2
             if self.__frames[i].bowl1 == 10:
-                if i < last_index and self.__frames[i + 1].bowl1 != 10:
+                if i < last_index and (self.__frames[i + 1].bowl1 != 10 or i == 9):
                     score += frame_score
                     score += self.__frames[i + 1].bowl1
                     score += self.__frames[i + 1].bowl2
@@ -28,7 +28,7 @@ class Line:
     def score_frame(self, bowl1: int, bowl2: int) -> None:
         self.__validate_bowl_value(1, bowl1)
         self.__validate_bowl_value(2, bowl2)
-        if bowl1 + bowl2 > 10:
+        if bowl1 + bowl2 > 10 and len(self.__frames) != 10:
             raise Exception(f"you cannot score more than 10 with your two bowls, total was {bowl1 + bowl2}")
         if self.is_game_over():
             raise Exception('the game is over, you cannot score')

@@ -234,3 +234,22 @@ class LineSpec(Specification):
 
         with then:
             self.line.get_score() == 300
+
+
+    def can_only_score_bowl1_when_in_frame_11_after_10th_frame_spare(self):
+
+        with given:
+            self.line = Line()
+            for i in range(9):
+                self.line.score_frame(0, 0)
+            self.line.score_frame(7, 3)
+
+        with when:
+            self.line.score_frame(6, bowl2)
+
+        with then:
+            e = thrown(Exception)
+            str(e[1]) == 'you only have 1 extra bowl after a 10th frame spare, bowl 2 must be zero but was ' + str(bowl2)
+
+        with where:
+            bowl2 = [1, 5]

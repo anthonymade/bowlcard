@@ -43,6 +43,9 @@ class Line:
     def get_frame(self, frame_number: int):
         return self.__frames[frame_number -1]
 
+    def is_game_over(self) -> bool:
+        pass
+
 class Frame:
 
     bowl1 = 0

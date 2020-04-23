@@ -179,3 +179,12 @@ class LineSpec(Specification):
         with then:
             e = thrown(Exception)
             str(e[1]) == 'the game is over, you cannot score'
+
+
+    def we_can_find_out_when_the_line_is_over(self):
+
+        with expect:
+            for i in range(10):
+                self.line.is_game_over() == False
+                self.line.score_frame(1, 2)
+            self.line.is_game_over() == True

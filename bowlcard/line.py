@@ -9,10 +9,14 @@ class Line:
         for i in range(len(self.__frames)):
             frame_score = self.__frames[i].bowl1 + self.__frames[i].bowl2
             if self.__frames[i].bowl1 == 10:
-                if i < last_index and self.__frames[last_index].bowl1 != 10:
+                if i < last_index and self.__frames[i + 1].bowl1 != 10:
                     score += frame_score
                     score += self.__frames[i + 1].bowl1
                     score += self.__frames[i + 1].bowl2
+                if i < last_index -1:
+                    score += frame_score
+                    score += self.__frames[i + 1].bowl1
+                    score += self.__frames[i + 2].bowl1
             elif frame_score == 10:
                 if i < last_index:
                     score += frame_score

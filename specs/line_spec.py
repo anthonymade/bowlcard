@@ -207,3 +207,17 @@ class LineSpec(Specification):
             bowl1 | bowl2
             6     | 4
             10    | 0
+
+
+    def can_correctly_score_when_a_spare_is_scored_in_the_10th_frame(self):
+
+        with given:
+            for i in range(9):
+                self.line.score_frame(0, 0)
+            self.line.score_frame(7, 3)
+
+        with when:
+            self.line.score_frame(6, 0)
+
+        with then:
+            self.line.get_score() == 16

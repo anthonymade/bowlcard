@@ -77,3 +77,14 @@ class LineSpec(Specification):
 
         with then:
             self.line.get_score() == 24
+
+
+    def two_consecutive_strikes_will_have_no_score(self):
+
+        with when:
+            self.line.score_frame(10, 0) # ?
+            self.line.score_frame(10, 0) # ?
+
+        with then:
+            self.line.get_score() == 0
+

@@ -103,29 +103,39 @@ class LineSpec(Specification):
     def bowl1_cannot_be_greater_than_10(self):
 
         with when:
-            self.line.score_frame(11, 0)
+            self.line.score_frame(bowl_value, 0)
 
         with then:
             e = thrown(Exception)
-            str(e[1]) == 'bowl 1 cannot be greater than 10, it was 11'
+            str(e[1]) == 'bowl 1 cannot be greater than 10, it was ' + str(bowl_value)
+
+        with where:
+            bowl_value = [11, 15]
 
     def bowl2_cannot_be_greater_than_10(self):
 
         with when:
-            self.line.score_frame(0, 11)
+            self.line.score_frame(0, bowl_value)
 
         with then:
             e = thrown(Exception)
-            str(e[1]) == 'bowl 2 cannot be greater than 10, it was 11'
+            str(e[1]) == 'bowl 2 cannot be greater than 10, it was ' + str(bowl_value)
+
+        with where:
+            bowl_value = [11, 14]
 
 
     def bowl1_cannot_be_less_than_0(self):
 
         with when:
-            self.line.score_frame(-1, 2)
+            self.line.score_frame(bowl_value, 2)
 
         with then:
             e = thrown(Exception)
-            str(e[1]) == 'bowl 1 cannot be less than 0, it was -1'
+            str(e[1]) == 'bowl 1 cannot be less than 0, it was ' + str(bowl_value)
+
+        with where:
+            bowl_value = [-1, -30]
+
 
 

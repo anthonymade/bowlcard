@@ -138,4 +138,17 @@ class LineSpec(Specification):
             bowl_value = [-1, -30]
 
 
+    def bowl2_cannot_be_less_than_0(self):
+
+        with when:
+            self.line.score_frame(2, bowl_value)
+
+        with then:
+            e = thrown(Exception)
+            str(e[1]) == 'bowl 2 cannot be less than 0, it was ' + str(bowl_value)
+
+        with where:
+            bowl_value = [-1, -13]
+
+
 

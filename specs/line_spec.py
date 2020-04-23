@@ -167,3 +167,15 @@ class LineSpec(Specification):
             8     | 7     | 15
 
 
+    def only_10_frames_can_be_played_on_a_line(self):
+
+        with given:
+            for i in range(10):
+                self.line.score_frame(1, 2)
+
+        with when:
+            self.line.score_frame(1, 2)
+
+        with then:
+            e = thrown(Exception)
+            str(e[1]) == 'the game is over, you cannot score'

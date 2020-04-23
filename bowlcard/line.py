@@ -28,6 +28,8 @@ class Line:
     def score_frame(self, bowl1: int, bowl2: int) -> None:
         self.__validate_bowl_value(1, bowl1)
         self.__validate_bowl_value(2, bowl2)
+        if bowl1 + bowl2 > 10:
+            raise Exception(f"you cannot score more than 10 with your two bowls, total was {bowl1 + bowl2}")
         self.__frames.append(Frame(bowl1, bowl2))
 
     def __validate_bowl_value(self, bowl_number: int, bowl_value: int) -> None:

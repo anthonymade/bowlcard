@@ -58,3 +58,22 @@ class LineSpec(Specification):
 
         with then:
             self.line.get_score() == 0
+
+
+    def we_can_score_a_strike(self):
+
+        with when:
+            self.line.score_frame(10, 0)
+
+        with then:
+            self.line.get_score() == 0
+
+
+    def the_frame_score_for_a_strike_includes_the_next_two_bowls(self):
+
+        with when:
+            self.line.score_frame(10, 0) # 17
+            self.line.score_frame(2, 5)  # 7
+
+        with then:
+            self.line.get_score() == 24

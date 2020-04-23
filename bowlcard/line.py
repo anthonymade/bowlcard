@@ -44,6 +44,8 @@ class Line:
         return self.__frames[frame_number -1]
 
     def is_game_over(self) -> bool:
+        if len(self.__frames) == 10:
+            return self.__frames[9].bowl1 + self.__frames[9].bowl2 != 10
         return len(self.__frames) > 9
 
 class Frame:

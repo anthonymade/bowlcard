@@ -49,3 +49,11 @@ class LineSpec(Specification):
             frame2_bowl1 = [3]
             frame2_bowl2 = [2]
             expected_score = [10 + 3 + 3 + 2]
+
+    def a_frame_score_is_not_added_to_the_total_until_its_value_is_known(self):
+
+        with when:
+            self.line.score_spare(4)
+
+        with then:
+            self.line.get_score() == 0

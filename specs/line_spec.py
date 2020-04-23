@@ -88,3 +88,14 @@ class LineSpec(Specification):
         with then:
             self.line.get_score() == 0
 
+
+    def can_score_two_consecutive_strikes_when_next_frame_scores(self):
+
+        with when:
+            self.line.score_frame(10, 0) # 23
+            self.line.score_frame(10, 0) # 14
+            self.line.score_frame(3, 1) # 4
+
+        with then:
+            self.line.get_score() == 41
+
